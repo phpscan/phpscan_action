@@ -1,0 +1,19 @@
+name: "Phpscan Vulnerabilities Scanner"
+description: "https://phpscan.com/"
+
+branding:
+  icon: "check"
+  color: "green"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+inputs:
+  auth_token:
+    description: "Phpscan auth token. You can get it in the profile on the site https://phpscan.com/"
+    required: true
+  project_name:
+    description: "The project's unique key. If you don't specify a project name, the name of the github repository will be used."
+    required: false
+    default: ""
