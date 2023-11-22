@@ -11,10 +11,16 @@ function failedSignal() {
 
 function successSignal() {
   ENDPOINT_SUCCESS="https://api.phpscan.com/api/check/ci_success/$1"
+  CMD="curl --silent --location "$ENDPOINT_SUCCESS" --header "Authorization: Bearer $PHP_SCAN_AUTH_TOKEN"
   RESPONSE_SUCCESS=$(curl --silent --location "$ENDPOINT_SUCCESS" --header "Authorization: Bearer $PHP_SCAN_AUTH_TOKEN")
-  if $DEBUG; then
-    echo "Use auth toke: $ENDPOINT_SUCCESS"
-  fi
+}
+
+function successSignal() {
+  ENDPOINT_SUCCESS="https://api.phpscan.com/api/check/ci_success/$1"
+  CMD="curl --location \"$ENDPOINT_SUCCESS\" --header \"Authorization: Bearer $PHP_SCAN_AUTH_TOKEN\""
+  echo "ci_success"
+  echo $CMD
+  eval "$CMD"
 }
 
 while getopts ":w:d:" o; do
