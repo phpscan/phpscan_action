@@ -2,7 +2,7 @@
 
 #default variables
 WAIT_COMPLETE=false
-DEBUG=true
+DEBUG=false
 
 function failedSignal() {
   ENDPOINT_FAILED="https://api.phpscan.com/api/check/ci_failed"
@@ -11,7 +11,10 @@ function failedSignal() {
 
 function successSignal() {
   ENDPOINT_SUCCESS="https://api.phpscan.com/api/check/ci_success/$1"
-  RESPONSE_SUCCESS=$(curl --silent -H 'content-type: application/json' -H "Authorization: Bearer $PHP_SCAN_AUTH_TOKEN" -G $ENDPOINT_SUCCESS)
+  RESPONSE_SUCCESS=$(curl --silent --location "$ENDPOINT_SUCCESS" --header "Authorization: Bearer $PHP_SCAN_AUTH_TOKEN")
+  if $DEBUG; then
+    echo "Use auth toke: $ENDPOINT_SUCCESS"
+  fi
 }
 
 while getopts ":w:d:" o; do
