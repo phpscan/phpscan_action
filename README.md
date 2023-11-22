@@ -37,7 +37,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Phpscan Vulnerabilities Scanner
-        uses: phpscan/phpscan_action@v0.1.6
+        uses: phpscan/phpscan_action@v0.1.7
         env:
           PHPSCAN_AUTH_TOKEN: ${{ secrets.PHPSCAN_AUTH_TOKEN }}
 ```
@@ -45,7 +45,7 @@ jobs:
 You can change the project name by using the optional input like this:
 ```yaml
       - name: Phpscan Vulnerabilities Scanner
-        uses: phpscan/phpscan_action@v0.1.6
+        uses: phpscan/phpscan_action@v0.1.7
         env:
           PHPSCAN_AUTH_TOKEN: ${{ secrets.PHPSCAN_AUTH_TOKEN }}
           PROJECT_NAME: "your project name"
