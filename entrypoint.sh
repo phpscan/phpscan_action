@@ -2,7 +2,7 @@
 
 #default variables
 WAIT_COMPLETE=false
-DEBUG=false
+DEBUG=true
 
 function failedSignal() {
   ENDPOINT_FAILED="https://api.phpscan.com/api/check/ci_failed"
